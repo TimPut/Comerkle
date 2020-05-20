@@ -7,7 +7,7 @@ homepage:            https://github.com/timput/Comerkle
 bug-reports:         https://github.com/timput/Comerkle/issues
 license:             NONE
 author:              tim put
-maintainer:          tim put <timpu@gmail.com>
+maintainer:          tim put <timput@gmail.com>
 copyright:           2020 tim put
 category:            Data
 build-type:          Simple
@@ -21,7 +21,10 @@ source-repository head
 
 common common-options
   build-depends:       base ^>= 4.13.0.0
-  
+                     , comonad ^>= 5.0.6
+                     , free ^>= 5.1.3
+                     , hashable ^>= 1.3.0.0
+                     , containers ^>= 0.6.2.1 
   ghc-options:         -Wall
                        -Wcompat
                        -Widentities
@@ -43,33 +46,3 @@ library
   import:              common-options
   hs-source-dirs:      src
   exposed-modules:     Comerkle
-
-executable Comerkle
-  import:              common-options
-  hs-source-dirs:      app
-  main-is:             Main.hs
-  build-depends:       Comerkle
-  ghc-options:         -threaded
-                       -rtsopts
-                       -with-rtsopts=-N
-
-test-suite Comerkle-test
-  import:              common-options
-  type:                exitcode-stdio-1.0
-  hs-source-dirs:      test
-  main-is:             Spec.hs
-  build-depends:       Comerkle
-  ghc-options:         -threaded
-                       -rtsopts
-                       -with-rtsopts=-N
-
-benchmark Comerkle-benchmark
-  import:              common-options
-  type:                exitcode-stdio-1.0
-  hs-source-dirs:      benchmark
-  main-is:             Main.hs
-  build-depends:       gauge
-                     , Comerkle
-  ghc-options:         -threaded
-                       -rtsopts
-                       -with-rtsopts=-N
